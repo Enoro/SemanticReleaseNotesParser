@@ -266,6 +266,16 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal(GetExampleAHtmlWithStyle(customStyle), resultHtml.Trim());
         }
 
+        [Fact]
+        public void Format_ExampleE_Output_Html_WithDefaultStyle()
+        {
+            // act
+            var resultHtml = SemanticReleaseNotesFormatter.Format(GetExampleEReleaseNotes(), new SemanticReleaseNotesConverterSettings { OutputFormat = OutputFormat.Html, IncludeStyle = true });
+            
+            // assert
+            Assert.Equal(ExampleEHtml, resultHtml.Trim());
+        }
+
         private ReleaseNotes GetExampleAReleaseNotes()
         {
             return new ReleaseNotes
@@ -345,6 +355,22 @@ namespace SemanticReleaseNotesParser.Core.Tests
                 }
             };
         }
+
+        private ReleaseNotes GetExampleEReleaseNotes()
+        {
+            return new ReleaseNotes
+            {
+                Summary = "",
+                Items = new List<Item>
+                 {
+                     new Item { Categories = { { "New" } }, Summary = "*Release Checker*: Now gives you a breakdown of exactly what you are missing." },
+                     new Item { Categories = { { "New" } }, Summary = "*Structured Layout*: An alternative layout engine that allows developers to control layout." },
+                     new Item { Categories = { { "Changed" } }, Summary = "*Timeline*: Comes with an additional grid view to show the same data." },
+                     new Item { Categories = { { "Fix" } }, Summary = "*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement." }
+                 }
+            };
+        }
+
 
         private ReleaseNotes GetExampleABisReleaseNotes()
         {
@@ -628,6 +654,17 @@ Incremental release designed to provide an update to some of the core plugins.";
 # Plugin
  1. {Changed} *Timeline*: Comes with an additional grid view to show the same data.
  1. {Fix} *Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement. [i1234](http://getglimpse.com)";
+
+        private const string ExampleEHtml = @"<html>
+<body>
+<ul>
+<li>{New} <em>Release Checker</em>: Now gives you a breakdown of exactly what you are missing.</li>
+<li>{New} <em>Structured Layout</em>: An alternative layout engine that allows developers to control layout.</li>
+<li>{Changed} <em>Timeline</em>: Comes with an additional grid view to show the same data.</li>
+<li>{Fix} <em>Ajax</em>: Fix that crashed poll in Chrome and IE due to log/trace statement.</li>
+</ul>
+</body>
+</html>";
 
         private const string SyntaxMetadataCommitsMarkdown = @"Commits: 56af25a...d3fead4
 
