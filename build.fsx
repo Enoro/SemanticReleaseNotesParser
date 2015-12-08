@@ -64,11 +64,17 @@ Target "Pack" (fun _ ->(
                     Authors = ["Enoro"]
                     Description = ""
                     Summary = ""
-                    Version = version
                     WorkingDir = buildDir
+                    Version = version
                     Publish = false
                     Files = [
-                        ("SemanticReleaseNotesParser.Core.dll", None, None)
+                        (@"SemanticReleaseNotesParser.Core.dll", None, None)
+                        (@"SemanticReleaseNotesParser.Core.XML", None, None)
+                    ]
+                    Dependencies = [
+                        "CommonMark.NET", "0.8.3"
+                        "DotLiquid", "1.8.0"
+                        "Humanizer", "1.33.7"
                     ]
                 })
             "./SemanticReleaseNotesParser.Core/SemanticReleaseNotesParser.Core.nuspec"
