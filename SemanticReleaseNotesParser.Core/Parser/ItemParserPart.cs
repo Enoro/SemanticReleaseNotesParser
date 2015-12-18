@@ -13,13 +13,14 @@ namespace SemanticReleaseNotesParser.Core.Parser
         public bool Parse(string input, ReleaseNotes releaseNotes, string nextInput)
         {
             var match = PriorityRegex.Match(input);
+            // ReSharper disable once InvertIf
             if (match.Success)
             {
                 var item = new Item();
 
                 // Priority
                 int priority;
-                if (!string.IsNullOrEmpty(match.Groups[1].Value) && Int32.TryParse(match.Groups[1].Value, out priority))
+                if (!string.IsNullOrEmpty(match.Groups[1].Value) && int.TryParse(match.Groups[1].Value, out priority))
                 {
                     item.Priority = priority;
                 }
@@ -38,6 +39,7 @@ namespace SemanticReleaseNotesParser.Core.Parser
                 var categories = CategoryRegex.Matches(input);
                 foreach (Match category in categories)
                 {
+                    // ReSharper disable once InvertIf
                     if (category.Success && !string.IsNullOrEmpty(category.Groups[1].Value))
                     {
                         var categoryName = category.Groups[1].Value.ToLowerInvariant().Titleize();

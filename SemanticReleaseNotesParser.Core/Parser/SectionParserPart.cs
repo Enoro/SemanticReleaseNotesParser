@@ -10,6 +10,7 @@ namespace SemanticReleaseNotesParser.Core.Parser
         public bool Parse(string input, ReleaseNotes releaseNotes, string nextInput)
         {
             var match = SectionRegex.Match(input);
+            // ReSharper disable once InvertIf
             if (match.Success)
             {
                 var section = new Section

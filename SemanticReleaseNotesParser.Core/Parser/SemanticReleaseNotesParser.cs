@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace SemanticReleaseNotesParser.Core.Parser
 {
@@ -27,7 +28,8 @@ namespace SemanticReleaseNotesParser.Core.Parser
         {
             if (reader == null)
             {
-                throw new ArgumentNullException("reader");
+                // ReSharper disable once UseNameofExpression
+                throw new ArgumentNullException(@"reader");
             }
 
             return Parse(reader.ReadToEnd());
@@ -43,14 +45,18 @@ namespace SemanticReleaseNotesParser.Core.Parser
         {
             if (string.IsNullOrEmpty(rawReleaseNotes))
             {
-                throw new ArgumentNullException("rawReleaseNotes");
+                // ReSharper disable once UseNameofExpression
+                throw new ArgumentNullException(@"rawReleaseNotes");
             }
 
             var releaseNotes = new ReleaseNotes();
 
-            var rawLines = rawReleaseNotes.Replace("\r", string.Empty).Split('\n');
+            //var rawLines = rawReleaseNotes.Replace("\r", string.Empty).Split('\n');
 
-            for (int i = 0; i < rawLines.Length; i++)
+            var reg = new Regex(@"^(?=\s?-)|^(?=#)", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
+            var rawLines = reg.Split(rawReleaseNotes.Replace("\r", string.Empty));
+
+            for (var i = 0; i < rawLines.Length; i++)
             {
                 var rawLine = rawLines[i];
                 var nextInput = string.Empty;
@@ -60,9 +66,10 @@ namespace SemanticReleaseNotesParser.Core.Parser
                 }
 
                 // Process the line
-                for (int j = 0; j < ParserParts.Count; j++)
+                // ReSharper disable once LoopCanBePartlyConvertedToQuery
+                foreach (var part in ParserParts)
                 {
-                    if (ParserParts[j].Parse(rawLine, releaseNotes, nextInput))
+                    if (part.Parse(rawLine, releaseNotes, nextInput))
                     {
                         break;
                     }
