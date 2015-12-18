@@ -68,8 +68,8 @@ Target "Pack" (fun _ ->(
                     Version = version
                     Publish = false
                     Files = [
-                        (@"SemanticReleaseNotesParser.Core.dll", None, None)
-                        (@"SemanticReleaseNotesParser.Core.XML", None, None)
+                         (@"SemanticReleaseNotesParser.Core.dll", Some "lib", None)
+                         (@"SemanticReleaseNotesParser.Core.XML", Some "lib", None)
                     ]
                     Dependencies = [
                         "CommonMark.NET", "0.8.3"
