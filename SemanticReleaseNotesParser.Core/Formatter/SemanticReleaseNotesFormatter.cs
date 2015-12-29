@@ -98,7 +98,7 @@ namespace SemanticReleaseNotesParser.Core.Formatter
                 header = string.Format(HtmlHeader, string.IsNullOrEmpty(settings.CustomStyle) ? GetEmbeddedResource("DefaultStyle.css") : settings.CustomStyle);
             }
 
-            return string.Format(HtmlEnvelope, header, CommonMarkConverter.Convert(result, DefaultCommonMarkSettings).Trim());
+            return string.Format(HtmlEnvelope, header, result);
         }
 
         private static List<Category> GetCategories(ReleaseNotes releaseNotes, SemanticReleaseNotesConverterSettings settings)
@@ -118,6 +118,8 @@ namespace SemanticReleaseNotesParser.Core.Formatter
         {
             foreach (var item in items)
             {
+                item.Content = CommonMarkConverter.Convert(item.Content, DefaultCommonMarkSettings).Trim();
+
                 if (item.Categories.Any())
                 {
                     foreach (var category in item.Categories)

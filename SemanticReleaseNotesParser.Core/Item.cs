@@ -27,11 +27,11 @@ namespace SemanticReleaseNotesParser.Core
         /// Priority
         /// </summary>
         public int Priority { get; set; }
-
+        
         /// <summary>
         /// Summary
         /// </summary>
-        public string Summary { get; set; }
+        public string Content { get; set; }
 
         /// <summary>
         /// Instantiates a new Item

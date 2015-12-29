@@ -24,7 +24,7 @@ namespace SemanticReleaseNotesParser.Core.Parser
                 {
                     item.Priority = priority;
                 }
-                input = PriorityRegex.Replace(input, string.Empty);
+                //input = PriorityRegex.Replace(input, string.Empty);
 
                 // link
                 var link = LinkParser.GetLink(input);
@@ -48,7 +48,7 @@ namespace SemanticReleaseNotesParser.Core.Parser
                             item.Categories.Add(categoryName);
                         }
                         var replacement = category.Groups[1].Value;
-                        if (input.EndsWith(category.Groups[1].Value))
+                        if (input.TrimEnd().EndsWith(category.Groups[1].Value))
                         {
                             replacement = string.Empty;
                         }
@@ -57,7 +57,7 @@ namespace SemanticReleaseNotesParser.Core.Parser
                 }
 
                 // summary
-                item.Summary = input.Trim();
+                item.Content = input;
 
                 if (releaseNotes.Sections.Count == 0)
                 {

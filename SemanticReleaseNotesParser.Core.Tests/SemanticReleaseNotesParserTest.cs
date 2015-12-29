@@ -51,10 +51,10 @@ namespace SemanticReleaseNotesParser.Core.Tests
             // assert
             Assert.Equal(4, releaseNote.Items.Count);
 
-            Assert.Equal("This is the _first_ *list* item.", releaseNote.Items[0].Summary);
-            Assert.Equal("This is the **second** __list__ item.", releaseNote.Items[1].Summary);
-            Assert.Equal("This is the `third` list item.", releaseNote.Items[2].Summary);
-            Assert.Equal("This is the [forth](?) list item.", releaseNote.Items[3].Summary);
+            Assert.Equal("This is the _first_ *list* item.", releaseNote.Items[0].Content);
+            Assert.Equal("This is the **second** __list__ item.", releaseNote.Items[1].Content);
+            Assert.Equal("This is the `third` list item.", releaseNote.Items[2].Content);
+            Assert.Equal("This is the [forth](?) list item.", releaseNote.Items[3].Content);
         }
 
         [Fact]
@@ -70,15 +70,15 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal("This is the summary for Section.", releaseNote.Sections[0].Summary);
 
             Assert.Equal(2, releaseNote.Sections[0].Items.Count);
-            Assert.Equal("This is a Section scoped first list item.", releaseNote.Sections[0].Items[0].Summary);
-            Assert.Equal("This is a Section scoped second list item.", releaseNote.Sections[0].Items[1].Summary);
+            Assert.Equal("This is a Section scoped first list item.", releaseNote.Sections[0].Items[0].Content);
+            Assert.Equal("This is a Section scoped second list item.", releaseNote.Sections[0].Items[1].Content);
 
             Assert.Equal("Other Section", releaseNote.Sections[1].Name);
             Assert.Equal("This is the summary for Other Section.", releaseNote.Sections[1].Summary);
 
             Assert.Equal(2, releaseNote.Sections[1].Items.Count);
-            Assert.Equal("This is a Other Section scoped first list item.", releaseNote.Sections[1].Items[0].Summary);
-            Assert.Equal("This is a Other Section scoped second list item.", releaseNote.Sections[1].Items[1].Summary);
+            Assert.Equal("This is a Other Section scoped first list item.", releaseNote.Sections[1].Items[0].Content);
+            Assert.Equal("This is a Other Section scoped second list item.", releaseNote.Sections[1].Items[1].Content);
         }
 
         [Fact]
@@ -92,25 +92,25 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal(7, releaseNote.Items.Count);
 
             Assert.Equal(1, releaseNote.Items[0].Priority);
-            Assert.Equal("This is a High priority list item.", releaseNote.Items[0].Summary);
+            Assert.Equal("This is a High priority list item.", releaseNote.Items[0].Content);
 
             Assert.Equal(1, releaseNote.Items[1].Priority);
-            Assert.Equal("This is a High priority list item.", releaseNote.Items[1].Summary);
+            Assert.Equal("This is a High priority list item.", releaseNote.Items[1].Content);
 
             Assert.Equal(2, releaseNote.Items[2].Priority);
-            Assert.Equal("This is a Normal priority list item.", releaseNote.Items[2].Summary);
+            Assert.Equal("This is a Normal priority list item.", releaseNote.Items[2].Content);
 
             Assert.Equal(1, releaseNote.Items[3].Priority);
-            Assert.Equal("This is a High priority list item.", releaseNote.Items[3].Summary);
+            Assert.Equal("This is a High priority list item.", releaseNote.Items[3].Content);
 
             Assert.Equal(2, releaseNote.Items[4].Priority);
-            Assert.Equal("This is a Normal priority list item.", releaseNote.Items[4].Summary);
+            Assert.Equal("This is a Normal priority list item.", releaseNote.Items[4].Content);
 
             Assert.Equal(3, releaseNote.Items[5].Priority);
-            Assert.Equal("This is a Minor priority list item.", releaseNote.Items[5].Summary);
+            Assert.Equal("This is a Minor priority list item.", releaseNote.Items[5].Content);
 
             Assert.Equal(3, releaseNote.Items[6].Priority);
-            Assert.Equal("This is a Minor priority list item.", releaseNote.Items[6].Summary);
+            Assert.Equal("This is a Minor priority list item.", releaseNote.Items[6].Content);
         }
 
         [Fact]
@@ -124,29 +124,29 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal(8, releaseNote.Items.Count);
 
             Assert.Equal("New", releaseNote.Items[0].Categories[0]);
-            Assert.Equal("This is a New list item.", releaseNote.Items[0].Summary);
+            Assert.Equal("This is a New list item.", releaseNote.Items[0].Content);
 
             Assert.Equal("Fix", releaseNote.Items[1].Categories[0]);
-            Assert.Equal("This is a Fix list item.", releaseNote.Items[1].Summary);
+            Assert.Equal("This is a Fix list item.", releaseNote.Items[1].Content);
 
             Assert.Equal("Change", releaseNote.Items[2].Categories[0]);
-            Assert.Equal("This is a Change list item.", releaseNote.Items[2].Summary);
+            Assert.Equal("This is a Change list item.", releaseNote.Items[2].Content);
 
             Assert.Equal("New", releaseNote.Items[3].Categories[0]);
-            Assert.Equal("New features are everyone's favorites.", releaseNote.Items[3].Summary);
+            Assert.Equal("New features are everyone's favorites.", releaseNote.Items[3].Content);
 
             Assert.Equal("Developer", releaseNote.Items[4].Categories[0]);
-            Assert.Equal("This is a list item for a Developer.", releaseNote.Items[4].Summary);
+            Assert.Equal("This is a list item for a Developer.", releaseNote.Items[4].Content);
 
             Assert.Equal("Super Special", releaseNote.Items[5].Categories[0]);
-            Assert.Equal("This is a super-special custom list item.", releaseNote.Items[5].Summary);
+            Assert.Equal("This is a super-special custom list item.", releaseNote.Items[5].Content);
 
             Assert.Equal("O", releaseNote.Items[6].Categories[0]);
-            Assert.Equal("This is a o ne letter category.", releaseNote.Items[6].Summary);
+            Assert.Equal("This is a o ne letter category.", releaseNote.Items[6].Content);
 
             Assert.Equal("Developer", releaseNote.Items[7].Categories[0]);
             Assert.Equal("New", releaseNote.Items[7].Categories[1]);
-            Assert.Equal("This is my last DEVELOPER list item.", releaseNote.Items[7].Summary);
+            Assert.Equal("This is my last DEVELOPER list item.", releaseNote.Items[7].Content);
         }
 
         [Fact]
@@ -158,16 +158,16 @@ namespace SemanticReleaseNotesParser.Core.Tests
             // assert
             Assert.Equal("Incremental release designed to provide an update to some of the core plugins.", releaseNote.Summary);
             Assert.Equal(4, releaseNote.Items.Count);
-            Assert.Equal("Release Checker: Now gives you a breakdown of exactly what you are missing.", releaseNote.Items[0].Summary);
+            Assert.Equal("Release Checker: Now gives you a breakdown of exactly what you are missing.", releaseNote.Items[0].Content);
             Assert.Equal("New", releaseNote.Items[0].Categories[0]);
 
-            Assert.Equal("Structured Layout: An alternative layout engine that allows developers to control layout.", releaseNote.Items[1].Summary);
+            Assert.Equal("Structured Layout: An alternative layout engine that allows developers to control layout.", releaseNote.Items[1].Content);
             Assert.Equal("New", releaseNote.Items[1].Categories[0]);
 
-            Assert.Equal("Timeline: Comes with an additional grid view to show the same data.", releaseNote.Items[2].Summary);
+            Assert.Equal("Timeline: Comes with an additional grid view to show the same data.", releaseNote.Items[2].Content);
             Assert.Equal("Changed", releaseNote.Items[2].Categories[0]);
 
-            Assert.Equal("Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Items[3].Summary);
+            Assert.Equal("Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Items[3].Content);
             Assert.Equal("Fix", releaseNote.Items[3].Categories[0]);
         }
 
@@ -186,19 +186,19 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal("System", releaseNote.Sections[0].Name);
             Assert.Equal(2, releaseNote.Sections[0].Items.Count);
 
-            Assert.Equal("*Release Checker*: Now gives you a breakdown of exactly what you are missing.", releaseNote.Sections[0].Items[0].Summary);
+            Assert.Equal("*Release Checker*: Now gives you a breakdown of exactly what you are missing.", releaseNote.Sections[0].Items[0].Content);
             Assert.Equal("New", releaseNote.Sections[0].Items[0].Categories[0]);
 
-            Assert.Equal("*Structured Layout*: An alternative layout engine that allows developers to control layout.", releaseNote.Sections[0].Items[1].Summary);
+            Assert.Equal("*Structured Layout*: An alternative layout engine that allows developers to control layout.", releaseNote.Sections[0].Items[1].Content);
             Assert.Equal("New", releaseNote.Sections[0].Items[1].Categories[0]);
 
             Assert.Equal("Plugin", releaseNote.Sections[1].Name);
             Assert.Equal(2, releaseNote.Sections[1].Items.Count);
 
-            Assert.Equal("*Timeline*: Comes with an additional grid view to show the same data.", releaseNote.Sections[1].Items[0].Summary);
+            Assert.Equal("*Timeline*: Comes with an additional grid view to show the same data.", releaseNote.Sections[1].Items[0].Content);
             Assert.Equal("Changed", releaseNote.Sections[1].Items[0].Categories[0]);
 
-            Assert.Equal("*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Sections[1].Items[1].Summary);
+            Assert.Equal("*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Sections[1].Items[1].Content);
             Assert.Equal("Fix", releaseNote.Sections[1].Items[1].Categories[0]);
         }
 
@@ -212,7 +212,7 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal("Incremental release designed to provide an update to some of the core plugins.", releaseNote.Summary);
 
             Assert.Equal(1, releaseNote.Items.Count);
-            Assert.Equal("*Example*: You can have global issues that aren't grouped to a section", releaseNote.Items[0].Summary);
+            Assert.Equal("*Example*: You can have global issues that aren't grouped to a section", releaseNote.Items[0].Content);
 
             Assert.Equal(2, releaseNote.Sections.Count);
 
@@ -220,20 +220,20 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal("This description is specific to system section.", releaseNote.Sections[0].Summary);
             Assert.Equal(2, releaseNote.Sections[0].Items.Count);
 
-            Assert.Equal("*Release Checker*: Now gives you a new breakdown of exactly what you are missing.", releaseNote.Sections[0].Items[0].Summary);
+            Assert.Equal("*Release Checker*: Now gives you a new breakdown of exactly what you are missing.", releaseNote.Sections[0].Items[0].Content);
             Assert.Equal("New", releaseNote.Sections[0].Items[0].Categories[0]);
 
-            Assert.Equal("*Structured Layout*: A new alternative layout engine that allows developers to control layout.", releaseNote.Sections[0].Items[1].Summary);
+            Assert.Equal("*Structured Layout*: A new alternative layout engine that allows developers to control layout.", releaseNote.Sections[0].Items[1].Content);
             Assert.Equal("New", releaseNote.Sections[0].Items[1].Categories[0]);
 
             Assert.Equal("Plugin", releaseNote.Sections[1].Name);
             Assert.Equal("This description is specific to plugin section.", releaseNote.Sections[1].Summary);
             Assert.Equal(2, releaseNote.Sections[1].Items.Count);
 
-            Assert.Equal("*Timeline*: Comes with an additional grid view to show the same data.", releaseNote.Sections[1].Items[0].Summary);
+            Assert.Equal("*Timeline*: Comes with an additional grid view to show the same data.", releaseNote.Sections[1].Items[0].Content);
             Assert.Equal("Changed", releaseNote.Sections[1].Items[0].Categories[0]);
 
-            Assert.Equal("*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Sections[1].Items[1].Summary);
+            Assert.Equal("*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Sections[1].Items[1].Content);
             Assert.Equal("Fix", releaseNote.Sections[1].Items[1].Categories[0]);
             Assert.Equal("i1234", releaseNote.Sections[1].Items[1].TaskId);
             Assert.Equal("http://getglimpse.com", releaseNote.Sections[1].Items[1].TaskLink);
@@ -250,7 +250,7 @@ namespace SemanticReleaseNotesParser.Core.Tests
 
             Assert.Equal(1, releaseNote.Items.Count);
             Assert.Equal(1, releaseNote.Items[0].Priority);
-            Assert.Equal("*Example*: You can have global issues that aren't grouped to a section", releaseNote.Items[0].Summary);
+            Assert.Equal("*Example*: You can have global issues that aren't grouped to a section", releaseNote.Items[0].Content);
 
             Assert.Equal(2, releaseNote.Sections.Count);
 
@@ -259,11 +259,11 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal("http://getglimpse.com/release/icon/core.png", releaseNote.Sections[0].Icon);
             Assert.Equal(2, releaseNote.Sections[0].Items.Count);
 
-            Assert.Equal("*Release Checker*: Now gives you a breakdown of exactly what you are missing.", releaseNote.Sections[0].Items[0].Summary);
+            Assert.Equal("*Release Checker*: Now gives you a breakdown of exactly what you are missing.", releaseNote.Sections[0].Items[0].Content);
             Assert.Equal("New", releaseNote.Sections[0].Items[0].Categories[0]);
             Assert.Equal(3, releaseNote.Sections[0].Items[0].Priority);
 
-            Assert.Equal("*Structured Layout*: An alternative layout engine that allows developers to control layout.", releaseNote.Sections[0].Items[1].Summary);
+            Assert.Equal("*Structured Layout*: An alternative layout engine that allows developers to control layout.", releaseNote.Sections[0].Items[1].Content);
             Assert.Equal("New", releaseNote.Sections[0].Items[1].Categories[0]);
             Assert.Equal(2, releaseNote.Sections[0].Items[1].Priority);
 
@@ -272,11 +272,11 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal("http://getglimpse.com/release/icon/mvc.png", releaseNote.Sections[1].Icon);
             Assert.Equal(2, releaseNote.Sections[1].Items.Count);
 
-            Assert.Equal("*Timeline*: Comes with an additional grid view to show the same data.", releaseNote.Sections[1].Items[0].Summary);
+            Assert.Equal("*Timeline*: Comes with an additional grid view to show the same data.", releaseNote.Sections[1].Items[0].Content);
             Assert.Equal("Changed", releaseNote.Sections[1].Items[0].Categories[0]);
             Assert.Equal(1, releaseNote.Sections[1].Items[1].Priority);
 
-            Assert.Equal("*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Sections[1].Items[1].Summary);
+            Assert.Equal("*Ajax*: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Sections[1].Items[1].Content);
             Assert.Equal("Fix", releaseNote.Sections[1].Items[1].Categories[0]);
             Assert.Equal(1, releaseNote.Sections[1].Items[1].Priority);
             Assert.Equal("i1234", releaseNote.Sections[1].Items[1].TaskId);
@@ -297,13 +297,13 @@ namespace SemanticReleaseNotesParser.Core.Tests
             Assert.Equal(3, releaseNote.Items.Count);
 
             Assert.Equal("Enhancement", releaseNote.Items[0].Categories[0]);
-            Assert.Equal("[#9](https://github.com/laedit/vika/issues/9) - Handle multiple report files", releaseNote.Items[0].Summary);
+            Assert.Equal("[#9](https://github.com/laedit/vika/issues/9) - Handle multiple report files", releaseNote.Items[0].Content);
 
             Assert.Equal("Enhancement", releaseNote.Items[1].Categories[0]);
-            Assert.Equal("[#2](https://github.com/laedit/vika/issues/2) - Support AppVeyor", releaseNote.Items[1].Summary);
+            Assert.Equal("[#2](https://github.com/laedit/vika/issues/2) - Support AppVeyor", releaseNote.Items[1].Content);
 
             Assert.Equal("Enhancement", releaseNote.Items[2].Categories[0]);
-            Assert.Equal("[#1](https://github.com/laedit/vika/issues/1) - Support InspectCode", releaseNote.Items[2].Summary);
+            Assert.Equal("[#1](https://github.com/laedit/vika/issues/1) - Support InspectCode", releaseNote.Items[2].Content);
         }
 
         [Fact]
@@ -315,16 +315,16 @@ namespace SemanticReleaseNotesParser.Core.Tests
             // assert
             Assert.Equal("Incremental release designed to provide an update to some of the core plugins.", releaseNote.Summary);
             Assert.Equal(4, releaseNote.Items.Count);
-            Assert.Equal("Release Checker: Now gives you a breakdown of exactly what you are missing.", releaseNote.Items[0].Summary);
+            Assert.Equal("Release Checker: Now gives you a breakdown of exactly what you are missing.", releaseNote.Items[0].Content);
             Assert.Equal("New", releaseNote.Items[0].Categories[0]);
 
-            Assert.Equal("Structured Layout: An alternative layout engine that allows developers to control layout.", releaseNote.Items[1].Summary);
+            Assert.Equal("Structured Layout: An alternative layout engine that allows developers to control layout.", releaseNote.Items[1].Content);
             Assert.Equal("New", releaseNote.Items[1].Categories[0]);
 
-            Assert.Equal("Timeline: Comes with an additional grid view to show the same data.", releaseNote.Items[2].Summary);
+            Assert.Equal("Timeline: Comes with an additional grid view to show the same data.", releaseNote.Items[2].Content);
             Assert.Equal("Changed", releaseNote.Items[2].Categories[0]);
 
-            Assert.Equal("Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Items[3].Summary);
+            Assert.Equal("Ajax: Fix that crashed poll in Chrome and IE due to log/trace statement.", releaseNote.Items[3].Content);
             Assert.Equal("Fix", releaseNote.Items[3].Categories[0]);
         }
 
