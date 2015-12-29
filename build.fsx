@@ -74,7 +74,7 @@ Target "Pack" (fun _ ->(
                     Dependencies = [
                         "CommonMark.NET", "0.8.3"
                         "DotLiquid", "1.8.0"
-                        "Humanizer", "1.33.7"
+                        "Humanizer", "1.37.7"
                     ]
                 })
             "./SemanticReleaseNotesParser.Core/SemanticReleaseNotesParser.Core.nuspec"
