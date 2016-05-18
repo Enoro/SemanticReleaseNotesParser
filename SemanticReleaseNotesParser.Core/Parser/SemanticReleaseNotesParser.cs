@@ -53,8 +53,8 @@ namespace SemanticReleaseNotesParser.Core.Parser
 
             //var rawLines = rawReleaseNotes.Replace("\r", string.Empty).Split('\n');
 
-            var reg = new Regex(@"^(?=\s?-)|^(?=#)", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
-            var rawLines = reg.Split(rawReleaseNotes.Replace("\r", string.Empty));
+            var regex = new Regex(@"^(?=\s?-)|^(?=#)", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
+            var rawLines = regex.Split(rawReleaseNotes.Replace("\r", string.Empty));
 
             for (var i = 0; i < rawLines.Length; i++)
             {

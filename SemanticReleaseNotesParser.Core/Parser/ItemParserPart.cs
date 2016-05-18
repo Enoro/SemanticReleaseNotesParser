@@ -8,7 +8,7 @@ namespace SemanticReleaseNotesParser.Core.Parser
     internal sealed class ItemParserPart : IParserPart
     {
         private static readonly Regex PriorityRegex = new Regex(@"^ [\-\+\*]|([123])\. ", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private static readonly Regex CategoryRegex = new Regex(@"\+([\w-]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex CategoryRegex = new Regex(@"(?<!\\)\+([\w-]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         public bool Parse(string input, ReleaseNotes releaseNotes, string nextInput)
         {
